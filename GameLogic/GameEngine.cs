@@ -10,10 +10,7 @@ namespace GameLogic
     {
         private static readonly GameEngine instance = new GameEngine();
 
-
-        private int numCollect;
-        private int numAvoid;
-        private int numChange;
+        private int totalToCollect;
         private int collectCount;
         private int changeCount;
         public long ElapsedTime { get; set; }
@@ -30,20 +27,7 @@ namespace GameLogic
             int screenHeight = screenBounds.Height;
             WindowSize = new Size(screenWidth / 2, screenHeight / 2);
 
-            InitNumbers();
 
-        }
-
-        private void InitNumbers()
-        {
-            Random random = new Random();
-
-            numCollect = random.Next(Config.MIN_ELEMENTS_EACH, Config.MAX_ELEMENTS_EACH);
-            numAvoid = random.Next(Config.MIN_ELEMENTS_EACH, Config.MAX_ELEMENTS_EACH);
-            numChange = random.Next(Config.MIN_ELEMENTS_EACH, Config.MAX_ELEMENTS_EACH);
-
-            collectCount = 0;
-            changeCount = 0;
         }
 
         public static GameEngine Instance
@@ -112,29 +96,6 @@ namespace GameLogic
             return string.Format("{0:D2}:{1:D2}:{2:D3}", minutes, seconds, milliseconds);
         }
 
-
-        public void InitElements()
-        {
-            elements = new List<Element>();
-            int i = 0;
-            while (i < numCollect || i < numAvoid || i < numChange)
-            {
-                if (i < numCollect)
-                {
-                    elements.Add(new CollectType());
-                }
-                if (i < numAvoid)
-                {
-                    elements.Add(new AvoidType());
-                }
-                if (i < numChange)
-                {
-                    elements.Add(new ChangeType());
-                }
-                i++;
-            }
-        }
-
         public List<Element> Elements
         {
 
@@ -142,7 +103,7 @@ namespace GameLogic
             {
                 if (elements == null)
                 {
-                    InitElements();
+                    elements = FactoryElements.Create(out totalToCollect);
                 }
                 return elements;
             }
@@ -151,7 +112,7 @@ namespace GameLogic
 
         public bool isGameEnded()
         {
-            return collectCount + changeCount == numChange + numCollect || playerLose;
+            return collectCount + changeCount == totalToCollect || playerLose;
         }
         public void LoseGame()
         {

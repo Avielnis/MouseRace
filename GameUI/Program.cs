@@ -13,8 +13,6 @@ namespace GameUI
 
             ApplicationConfiguration.Initialize();
             Application.Run(new StartForm());
-
-
         }
     }
 }

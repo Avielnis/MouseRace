@@ -9,10 +9,11 @@ namespace GameLogic
 {
     internal class AvoidType : Element
     {
+        private const int THREE_SECONDS = 3000;
         public AvoidType()
         {
             this.BackColor = Color.Red;
-            personalBehaviorTimer.Interval = 3000;
+            personalBehaviorTimer.Interval = THREE_SECONDS;
             personalBehaviorTimer.Tick += PersonalTimer_Tick;
         }
 

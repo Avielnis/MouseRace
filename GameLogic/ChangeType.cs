@@ -11,7 +11,7 @@ namespace GameLogic
 {
     public class ChangeType : Element
     {
-        float angle = 0;
+        private float angle = 0;
         private Color currentColor;
 
         public ChangeType()

@@ -21,10 +21,6 @@ namespace GameLogic
         public Size WindowSize { get; }
         private bool playerLose;
 
-        private readonly int MIN_ELEMENTS_EACH = 3;
-        private readonly int MAX_ELEMENTS_EACH = 10;
-        protected readonly int SPEED = 10;
-        private int MAX_ELEMENT_SIZE = 50;
 
 
         private GameEngine()
@@ -42,9 +38,9 @@ namespace GameLogic
         {
             Random random = new Random();
 
-            numCollect = random.Next(MIN_ELEMENTS_EACH, MAX_ELEMENTS_EACH);
-            numAvoid = random.Next(MIN_ELEMENTS_EACH, MAX_ELEMENTS_EACH);
-            numChange = random.Next(MIN_ELEMENTS_EACH, MAX_ELEMENTS_EACH);
+            numCollect = random.Next(Config.MIN_ELEMENTS_EACH, Config.MAX_ELEMENTS_EACH);
+            numAvoid = random.Next(Config.MIN_ELEMENTS_EACH, Config.MAX_ELEMENTS_EACH);
+            numChange = random.Next(Config.MIN_ELEMENTS_EACH, Config.MAX_ELEMENTS_EACH);
 
             collectCount = 0;
             changeCount = 0;
@@ -62,14 +58,14 @@ namespace GameLogic
         {
             get
             {
-                return SPEED;
+                return Config.SPEED;
             }
         }
         public int MaxSize
         {
             get
             {
-                return MAX_ELEMENT_SIZE;
+                return Config.MAX_ELEMENT_SIZE;
             }
         }
         public void AddCollected(Element element)

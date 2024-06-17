@@ -8,8 +8,7 @@ namespace GameLogic
 {
     internal class CollectType : Element
     {
-        private int TWO_SECONDS = 2000;
-        private int MARGIN = 10;
+        private const int TWO_SECONDS = 2000;
 
         public CollectType() {
             this.BackColor = Color.Green;

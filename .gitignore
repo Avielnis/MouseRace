@@ -3,3 +3,6 @@
 /GameLogic/bin/Debug/net8.0-windows
 /GameUI/bin/Debug/net8.0-windows
 /GameUI/obj
+/GameLogic/bin/Debug/net7.0-windows
+/GameUI/bin/Debug/net7.0-windows
+/.vs/MouseRace

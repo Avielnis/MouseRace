@@ -14,7 +14,7 @@ namespace GameLogic
     {
 
         protected bool isMovingFoword;
-        protected System.Windows.Forms.Timer movingTimer;
+        //protected System.Windows.Forms.Timer movingTimer;
         protected System.Windows.Forms.Timer personalBehaviorTimer;
 
         protected Random random = new Random();
@@ -45,10 +45,10 @@ namespace GameLogic
         }
         protected void setTimers()
         {
-            movingTimer = new System.Windows.Forms.Timer();
-            movingTimer.Enabled = true;
-            movingTimer.Interval = 50;
-            movingTimer.Tick += MovingTime_Tick;
+            //movingTimer = new System.Windows.Forms.Timer();
+            //movingTimer.Enabled = true;
+            //movingTimer.Interval = 50;
+            //movingTimer.Tick += MovingTime_Tick;
 
             personalBehaviorTimer = new System.Windows.Forms.Timer();
             personalBehaviorTimer.Enabled = true;
@@ -56,11 +56,11 @@ namespace GameLogic
 
         }
 
-        private void MovingTime_Tick(object? sender, EventArgs e)
-        {
-            this.Behave();
+        //private void MovingTime_Tick(object? sender, EventArgs e)
+        //{
+        //    this.Behave();
 
-        }
+        //}
 
         public abstract void Behave();
 

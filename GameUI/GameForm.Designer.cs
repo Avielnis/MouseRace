@@ -30,16 +30,18 @@ namespace GameUI
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameForm));
             CollectedCountLable = new Label();
             TimerLable = new Label();
+            MovingTimer = new System.Windows.Forms.Timer(components);
             SuspendLayout();
             // 
             // CollectedCountLable
             // 
             CollectedCountLable.Anchor = AnchorStyles.Top;
             CollectedCountLable.AutoSize = true;
-            CollectedCountLable.Font = new Font("Bernard MT Condensed", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            CollectedCountLable.Font = new Font("Bernard MT Condensed", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             CollectedCountLable.Location = new Point(12, 9);
             CollectedCountLable.Name = "CollectedCountLable";
             CollectedCountLable.Size = new Size(95, 22);
@@ -50,12 +52,18 @@ namespace GameUI
             // 
             TimerLable.Anchor = AnchorStyles.Top;
             TimerLable.AutoSize = true;
-            TimerLable.Font = new Font("Bernard MT Condensed", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TimerLable.Font = new Font("Bernard MT Condensed", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             TimerLable.Location = new Point(12, 41);
             TimerLable.Name = "TimerLable";
             TimerLable.Size = new Size(51, 22);
             TimerLable.TabIndex = 1;
             TimerLable.Text = "00:00";
+            // 
+            // MovingTimer
+            // 
+            MovingTimer.Enabled = true;
+            MovingTimer.Interval = 50;
+            MovingTimer.Tick += MovingTimer_Tick;
             // 
             // GameForm
             // 
@@ -80,5 +88,6 @@ namespace GameUI
 
         private Label CollectedCountLable;
         private Label TimerLable;
+        private System.Windows.Forms.Timer MovingTimer;
     }
 }

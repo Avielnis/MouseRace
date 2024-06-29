@@ -35,11 +35,11 @@ namespace GameUI
         {
             (sender as Element).PreformClick();
             CollectedCountLable.Text = string.Format("Collected {0}", GameEngine.Instance.CollectedCount.ToString());
-            
+
             if (GameEngine.Instance.isGameEnded())
             {
                 EndGame();
-            }   
+            }
         }
 
         private void EndGame()
@@ -88,6 +88,14 @@ namespace GameUI
             cts.Cancel();
             cts.Dispose();
             base.OnFormClosing(e);
+        }
+
+        private void MovingTimer_Tick(object sender, EventArgs e)
+        {
+            foreach (Element element in GameEngine.Instance.Elements)
+            {
+                element.Behave();
+            }   
         }
     }
 }

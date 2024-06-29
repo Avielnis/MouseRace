@@ -67,11 +67,6 @@ namespace GameLogic
             {
                 changeCount++;
             }
-
-            if ((collectCount + changeCount) % 3 == 0)
-            {
-                Speed *= 2;
-            }
         }
 
         public int CollectedCount

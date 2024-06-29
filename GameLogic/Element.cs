@@ -67,6 +67,16 @@ namespace GameLogic
         //    this.Behave();
 
         //}
+        public void Disable()
+        {
+            this.Enabled = false;
+            this.personalBehaviorTimer.Enabled = false;
+        }
+        public void Enable()
+        {
+            this.Enabled = true;
+            this.personalBehaviorTimer.Enabled = true;
+        }
 
         public abstract void Behave();
 

@@ -95,7 +95,47 @@ namespace GameUI
             foreach (Element element in GameEngine.Instance.Elements)
             {
                 element.Behave();
-            }   
+            }
+        }
+
+        private void PuaseButton_Click(object sender, EventArgs e)
+        {
+            if(MovingTimer.Enabled)
+            {
+                PuaseGame();
+                DialogResult result = MessageBox.Show("Do you want to resume the game?", "Pause Game", MessageBoxButtons.OKCancel);
+                
+                
+                if (result == DialogResult.OK) {
+                    ResumeGame();
+                }
+            }
+            else
+            {
+                ResumeGame();
+            }
+        }
+
+        private void ResumeGame()
+        {
+            MovingTimer.Enabled = true;
+            PuaseButton.Text = "Pause";
+            StartTimer();
+            foreach (Element element in GameEngine.Instance.Elements)
+            {
+                element.Enable();
+            }
+        }
+
+        private void PuaseGame()
+        {
+            MovingTimer.Enabled = false;
+            PuaseButton.Text = "Resume";
+            cts.Cancel();
+            foreach (Element element in GameEngine.Instance.Elements)
+            {
+                element.Disable();
+            }
         }
     }
 }

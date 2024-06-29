@@ -35,6 +35,7 @@ namespace GameUI
             CollectedCountLable = new Label();
             TimerLable = new Label();
             MovingTimer = new System.Windows.Forms.Timer(components);
+            PuaseButton = new Button();
             SuspendLayout();
             // 
             // CollectedCountLable
@@ -65,12 +66,28 @@ namespace GameUI
             MovingTimer.Interval = 50;
             MovingTimer.Tick += MovingTimer_Tick;
             // 
+            // PuaseButton
+            // 
+            PuaseButton.BackColor = Color.SteelBlue;
+            PuaseButton.FlatAppearance.BorderSize = 0;
+            PuaseButton.FlatStyle = FlatStyle.Flat;
+            PuaseButton.Font = new Font("Aharoni", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            PuaseButton.ForeColor = SystemColors.ButtonFace;
+            PuaseButton.Location = new Point(12, 415);
+            PuaseButton.Name = "PuaseButton";
+            PuaseButton.Size = new Size(75, 23);
+            PuaseButton.TabIndex = 3;
+            PuaseButton.Text = "Pause";
+            PuaseButton.Click += PuaseButton_Click;
+            PuaseButton.UseVisualStyleBackColor = true;
+            // 
             // GameForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(720, 450);
+            Controls.Add(PuaseButton);
             Controls.Add(TimerLable);
             Controls.Add(CollectedCountLable);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -89,5 +106,6 @@ namespace GameUI
         private Label CollectedCountLable;
         private Label TimerLable;
         private System.Windows.Forms.Timer MovingTimer;
+        private Button PuaseButton;
     }
 }

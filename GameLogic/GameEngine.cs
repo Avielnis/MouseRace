@@ -44,6 +44,10 @@ namespace GameLogic
             {
                 return Config.SPEED;
             }
+            set
+            {
+                Config.SPEED = value;
+            }
         }
         public int MaxSize
         {
@@ -62,6 +66,11 @@ namespace GameLogic
             else
             {
                 changeCount++;
+            }
+
+            if ((collectCount + changeCount) % 3 == 0)
+            {
+                Speed *= 2;
             }
         }
 

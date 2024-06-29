@@ -14,10 +14,10 @@ namespace GameLogic
             this.BackColor = Color.Green;
             this.Size = new Size(this.Width + 10, this.Height - 5); // make a rectengle
             personalBehaviorTimer.Interval = TWO_SECONDS;
-            personalBehaviorTimer.Tick += PersonalBehaeviorTimer_Tick;
+            personalBehaviorTimer.Tick += PersonalTimer_Tick;
         }
 
-        private void PersonalBehaeviorTimer_Tick(object? sender, EventArgs e)
+        public override void PersonalTimer_Tick(object? sender, EventArgs e)
         {
             isMovingFoword = !isMovingFoword;
         }

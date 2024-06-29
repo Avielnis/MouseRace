@@ -21,10 +21,10 @@ namespace GameLogic
             FlatAppearance.MouseOverBackColor = Color.Transparent;
 
             personalBehaviorTimer.Interval = random.Next(2, 5) * 1000;// random interval
-            personalBehaviorTimer.Tick += PersonalBehaeviorTimer_Tick;
+            personalBehaviorTimer.Tick += PersonalTimer_Tick;
         }
 
-        private void PersonalBehaeviorTimer_Tick(object? sender, EventArgs e)
+        public override void PersonalTimer_Tick(object? sender, EventArgs e)
         {
             if (isCollect())
             {

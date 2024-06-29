@@ -66,5 +66,7 @@ namespace GameLogic
 
 
         public abstract void PreformClick();
+
+        public abstract void PersonalTimer_Tick(object? sender, EventArgs e);
     }
 }

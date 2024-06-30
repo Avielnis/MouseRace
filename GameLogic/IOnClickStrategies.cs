@@ -21,7 +21,7 @@ namespace GameLogic
 
         public void PlaySound()
         {
-            string filePath = @"C:\Users\aviel\IDC\MyProjects\Prismm\MouseRace\GameLogic\Resources\CollectSound.wav";
+            string filePath = string.Format("{0}\\GameLogic\\Resources\\CollectSound.wav", Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.Parent.FullName);
             SoundPlayer player = new SoundPlayer(filePath);
             player.Play();
 
@@ -38,7 +38,7 @@ namespace GameLogic
 
         public void PlaySound()
         {
-            string filePath = @"C:\Users\aviel\IDC\MyProjects\Prismm\MouseRace\GameLogic\Resources\AvoidSound.wav";
+            string filePath = string.Format("{0}\\GameLogic\\Resources\\AvoidSound.wav", Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.Parent.FullName);
             SoundPlayer player = new SoundPlayer(filePath);
             player.Play();
         }

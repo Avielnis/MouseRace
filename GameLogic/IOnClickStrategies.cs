@@ -15,13 +15,15 @@ namespace GameLogic
         {
             PlaySound();
             GameEngine.Instance.AddCollected(element);
-            element.Parent.Controls.Remove(element);
+            element.Parent?.Controls.Remove(element);
         }
 
         public void PlaySound()
         {
-            SoundPlayer player = new SoundPlayer(@"C:\Users\aviel\IDC\MyProjects\Prismm\MouseRace\GameLogic\Resources\CollectSound.wav");
+            string filePath = @"C:\Users\aviel\IDC\MyProjects\Prismm\MouseRace\GameLogic\Resources\CollectSound.wav";
+            SoundPlayer player = new SoundPlayer(filePath);
             player.Play();
+           
         }
     }
 
@@ -35,7 +37,8 @@ namespace GameLogic
 
         public void PlaySound()
         {
-            SoundPlayer player = new SoundPlayer(@"C:\Users\aviel\IDC\MyProjects\Prismm\MouseRace\GameLogic\Resources\AvoidSound.wav");
+            string filePath = @"C:\Users\aviel\IDC\MyProjects\Prismm\MouseRace\GameLogic\Resources\AvoidSound.wav";
+            SoundPlayer player = new SoundPlayer(filePath);
             player.Play();
         }
     }

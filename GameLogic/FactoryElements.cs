@@ -41,7 +41,7 @@ namespace GameLogic
                 }
                 i++;
             }
-            totalToCollect = numCollect + numChange;
+            totalToCollect = numCollect + numChange+numTriang;
             return elements;
         }
     }

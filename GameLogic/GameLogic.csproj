@@ -13,14 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="AvoidType.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Update="AvoidType.cs" />
     <Compile Update="ChangeType.cs" />
     <Compile Update="CollectType.cs" />
-    <Compile Update="Element.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Update="Element.cs" />
   </ItemGroup>
 
 </Project>

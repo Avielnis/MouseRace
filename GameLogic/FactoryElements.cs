@@ -25,19 +25,19 @@ namespace GameLogic
             {
                 if (i < numCollect)
                 {
-                    elements.Add(new CollectType());
+                    elements.Add(new CollectType(new CollectStrategy()));
                 }
                 if (i < numAvoid)
                 {
-                    elements.Add(new AvoidType());
+                    elements.Add(new AvoidType(new AvoidStrategy()));
                 }
                 if (i < numChange)
                 {
-                    elements.Add(new ChangeType());
+                    elements.Add(new ChangeType(new ChangeStrategy()));
                 }
                 if(i < numTriang)
                 {
-                    elements.Add(new TriangType());
+                    elements.Add(new TriangType(new CollectStrategy()));
                 }
                 i++;
             }

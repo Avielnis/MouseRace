@@ -1,4 +1,5 @@
 ﻿using System.Media;
+using System.Security.Cryptography.Xml;
 
 namespace GameLogic
 {
@@ -15,7 +16,7 @@ namespace GameLogic
         {
             PlaySound();
             GameEngine.Instance.AddCollected(element);
-            element.Parent?.Controls.Remove(element);
+            element.Parent.Controls.Remove(element);
         }
 
         public void PlaySound()
@@ -23,7 +24,7 @@ namespace GameLogic
             string filePath = @"C:\Users\aviel\IDC\MyProjects\Prismm\MouseRace\GameLogic\Resources\CollectSound.wav";
             SoundPlayer player = new SoundPlayer(filePath);
             player.Play();
-           
+
         }
     }
 
@@ -41,5 +42,37 @@ namespace GameLogic
             SoundPlayer player = new SoundPlayer(filePath);
             player.Play();
         }
+    }
+
+    public class ChangeStrategy : IOnClickStrategies
+    {
+        private ChangeType elem = null;
+        public void Invoke(Element element)
+        {
+            elem = (ChangeType)(element);
+            if (elem.isCollect())
+            {
+                new CollectStrategy().Invoke(elem);
+                return;
+            }
+            new AvoidStrategy().Invoke(elem);
+        }
+        
+        public void PlaySound()
+        {
+            if(elem == null)
+            {
+                return;
+            }
+            if (elem.isCollect())
+            {
+                new CollectStrategy().PlaySound();
+            }
+            else
+            {
+                new AvoidStrategy().PlaySound();
+            }
+        }
+
     }
 }

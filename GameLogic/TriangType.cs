@@ -9,7 +9,7 @@ namespace GameLogic
 {
     public class TriangType : Element
     {
-        public TriangType()
+        public TriangType(IOnClickStrategies OnClickStrategie) : base(OnClickStrategie)
         {
             this.BackColor = Color.White;
             personalBehaviorTimer.Interval = 3000;
@@ -38,10 +38,10 @@ namespace GameLogic
             }
         }
 
-        public override void PreformClick()
-        {
-            new CollectStrategy().Invoke(this);
-        }
+        //public override void PreformClick()
+        //{
+        //    new CollectStrategy().Invoke(this);
+        //}
 
         private void PersonalBehaviorTimer_Tick(object? sender, EventArgs e)
         {

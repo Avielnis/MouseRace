@@ -16,20 +16,24 @@ namespace GameLogic
         protected bool isMovingFoword;
         protected System.Windows.Forms.Timer movingTimer;
         protected System.Windows.Forms.Timer personalBehaviorTimer;
+        protected IOnClickStrategies onClickStrategie;
 
         protected Random random = new Random();
 
-        protected readonly Size MARGINED_WINDOW_SIZE;
+       
         protected readonly int SPEED = GameEngine.Instance.Speed;
-        private readonly int MAX_SIZE = GameEngine.Instance.MaxSize;
+        private static readonly int MAX_SIZE = GameEngine.Instance.MaxSize;
+        protected static readonly Size MARGINED_WINDOW_SIZE = new Size(GameEngine.Instance.WindowSize.Width - MAX_SIZE, GameEngine.Instance.WindowSize.Height - MAX_SIZE);
 
-        public Element() : base()
+
+        public Element(IOnClickStrategies onClickStrategie) : base()
         {
             isMovingFoword = true;
-            MARGINED_WINDOW_SIZE = new Size(GameEngine.Instance.WindowSize.Width - MAX_SIZE, GameEngine.Instance.WindowSize.Height - MAX_SIZE);
+            this.onClickStrategie = onClickStrategie;
             setTimers();
 
             styleElement();
+
         }
         private void styleElement()
         {
@@ -59,12 +63,19 @@ namespace GameLogic
         private void MovingTime_Tick(object? sender, EventArgs e)
         {
             this.Behave();
+        }
 
+        public IOnClickStrategies OnClickStrategie
+        {
+            set { this.OnClickStrategie = value; }
         }
 
         public abstract void Behave();
 
 
-        public abstract void PreformClick();
+        public virtual void PreformClick()
+        {
+            onClickStrategie.Invoke(this);
+        }
     }
 }

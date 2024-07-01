@@ -1,0 +1,29 @@
+{
+  "elements": [
+    {
+      "type": "Avoid",
+      "size": 10,
+      "speed": 0.5
+    },
+    {
+      "type": "Collect",
+      "size": 15,
+      "speed": 0.7
+    },
+    {
+      "type": "Change",
+      "size": 20,
+      "speed": 0.2
+    },
+    {
+      "type": "Change",
+      "size": 20,
+      "speed": 1
+    },
+    {
+      "type": "Collect",
+      "size": 30,
+      "speed": 1.2
+    }
+  ]
+}

@@ -26,7 +26,7 @@ namespace GameLogic
         {
             if(isMovingFoword)
             {
-                this.Top -= SPEED;
+                this.Top -= speed;
                 if (this.Top <= 0)
                 {
                     isMovingFoword = false;
@@ -34,7 +34,7 @@ namespace GameLogic
             }
             else
             {
-                this.Top += SPEED;
+                this.Top += speed;
                 if (this.Top +this.Height >= MARGINED_WINDOW_SIZE.Height)
                 {
                     isMovingFoword = true;

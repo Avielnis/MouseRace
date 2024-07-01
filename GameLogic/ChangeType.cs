@@ -45,7 +45,7 @@ namespace GameLogic
         public override void Behave()
         {
 
-            angle += SPEED;
+            angle += speed;
             if (angle >= 360)
             {
                 angle = 0;

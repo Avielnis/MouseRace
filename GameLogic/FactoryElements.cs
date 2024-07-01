@@ -9,7 +9,7 @@ namespace GameLogic
 {
     public class FactoryElements
     {
-        public static List<Element> Create(out int totalToCollect)
+        public static List<Element> Create_v1(out int totalToCollect)
         {
 
             Random random = new Random();
@@ -37,6 +37,43 @@ namespace GameLogic
                 i++;
             }
             totalToCollect = numCollect + numChange;
+            return elements;
+        }
+
+        public static List<Element> Create(out int totalToCollect)
+        {
+            JsonHandler jsonHandler = new JsonHandler(Config.JSON_FILE_PATH);
+            List<ElementJsonData> data = jsonHandler.LoadJsonData();
+
+            totalToCollect = 0;
+            List<Element> elements = new List<Element>();
+            foreach (ElementJsonData dataItem in data)
+            {
+                Element element = null;
+                if (dataItem.Type == "Avoid")
+                {
+                    element = new AvoidType();
+                }
+                if (dataItem.Type == "Collect")
+                {
+                    element= new CollectType();
+                    totalToCollect++;
+                }
+                if (dataItem.Type == "Change")
+                {
+                    element = new ChangeType();
+                    totalToCollect++;
+                }
+
+                if(element== null)
+                {
+                    continue;
+                }
+
+                element.setSize(dataItem.Size*2);
+                element.setSpeed((int)(dataItem.Speed * 10));
+                elements.Add(element);
+            }
             return elements;
         }
     }

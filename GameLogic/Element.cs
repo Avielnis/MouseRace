@@ -20,7 +20,7 @@ namespace GameLogic
         protected Random random = new Random();
 
         protected readonly Size MARGINED_WINDOW_SIZE;
-        protected readonly int SPEED = GameEngine.Instance.Speed;
+        protected int speed = GameEngine.Instance.Speed;
         private readonly int MAX_SIZE = GameEngine.Instance.MaxSize;
 
         public Element() : base()
@@ -43,6 +43,15 @@ namespace GameLogic
             FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
             BackColor = Color.Transparent;
         }
+
+        public void setSize(int size)
+        {
+            this.Size = new Size(size, size);
+        }
+        public void setSpeed(int speed)
+        {
+            this.speed = speed;
+        }
         protected void setTimers()
         {
             movingTimer = new System.Windows.Forms.Timer();
@@ -59,7 +68,6 @@ namespace GameLogic
         private void MovingTime_Tick(object? sender, EventArgs e)
         {
             this.Behave();
-
         }
 
         public abstract void Behave();

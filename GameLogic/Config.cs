@@ -13,6 +13,7 @@ namespace GameLogic
         internal static readonly int MAX_ELEMENTS_EACH = 10;
         internal static readonly int SPEED = 10;
         internal static readonly int MAX_ELEMENT_SIZE = 50;
+        internal static readonly string JSON_FILE_PATH = @"C:\Users\aviel\IDC\MyProjects\Prismm\MouseRace\GameLogic\ElementsJson.json";
     }
 
 

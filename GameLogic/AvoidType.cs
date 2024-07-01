@@ -10,7 +10,7 @@ namespace GameLogic
     internal class AvoidType : Element
     {
         private const int THREE_SECONDS = 3000;
-        public AvoidType()
+        public AvoidType(IOnClickStrategies OnClickStrategie) : base(OnClickStrategie)
         {
             this.BackColor = Color.Red;
             personalBehaviorTimer.Interval = THREE_SECONDS;
@@ -47,14 +47,19 @@ namespace GameLogic
         {
             GraphicsPath graphics = new GraphicsPath();
             graphics.AddEllipse(0, 0, this.Width,this.Height);
+            //Point[] p = new Point[4];
+            //p[0] = new Point(0,0);
+            //p[1]= new Point(1000,1000);
+            //p[2]= new Point(0,2000);
+            //graphics.AddPolygon(p);
             this.Region = new System.Drawing.Region(graphics);
             base.OnPaint(pevent);
         }
 
-        public override void PreformClick()
-        {
-            new AvoidStrategy().Invoke(this);
-        }
+        //public override void PreformClick()
+        //{
+        //    new AvoidStrategy().Invoke(this);
+        //}
     }
 }
 

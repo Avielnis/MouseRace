@@ -10,7 +10,8 @@ namespace GameLogic
     {
         private const int TWO_SECONDS = 2000;
 
-        public CollectType() {
+        public CollectType(IOnClickStrategies OnClickStrategie) : base( OnClickStrategie)
+        {
             this.BackColor = Color.Green;
             this.Size = new Size(this.Width + 10, this.Height - 5); // make a rectengle
             personalBehaviorTimer.Interval = TWO_SECONDS;
@@ -24,7 +25,7 @@ namespace GameLogic
 
         public override void Behave()
         {
-            if(isMovingFoword)
+            if (isMovingFoword)
             {
                 this.Top -= SPEED;
                 if (this.Top <= 0)
@@ -35,16 +36,16 @@ namespace GameLogic
             else
             {
                 this.Top += SPEED;
-                if (this.Top +this.Height >= MARGINED_WINDOW_SIZE.Height)
+                if (this.Top + this.Height >= MARGINED_WINDOW_SIZE.Height)
                 {
                     isMovingFoword = true;
                 }
             }
         }
 
-        public override void PreformClick()
-        {
-            new CollectStrategy().Invoke(this);
-        }
+        //public override void PreformClick()
+        //{
+        //    new CollectStrategy().Invoke(this);
+        //}
     }
 }

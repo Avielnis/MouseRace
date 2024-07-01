@@ -14,7 +14,7 @@ namespace GameLogic
         private float angle = 0;
         private Color currentColor;
 
-        public ChangeType()
+        public ChangeType(IOnClickStrategies OnClickStrategie) : base(OnClickStrategie)
         {
             currentColor = Color.Green;
             FlatAppearance.MouseDownBackColor = Color.Transparent;
@@ -38,7 +38,7 @@ namespace GameLogic
             personalBehaviorTimer.Interval = random.Next(2, 5) * 1000;
         }
 
-        private bool isCollect()
+        public bool isCollect()
         {
             return currentColor == Color.Green;
         }
@@ -72,15 +72,15 @@ namespace GameLogic
             }
         }
 
-        public override void PreformClick()
-        {
-            if (isCollect())
-            {
-                new CollectStrategy().Invoke(this);
-                return;
-            }
-            new AvoidStrategy().Invoke(this);
-        }
+        //public override void PreformClick()
+        //{
+        //    if (isCollect())
+        //    {
+        //        new CollectStrategy().Invoke(this);
+        //        return;
+        //    }
+        //    new AvoidStrategy().Invoke(this);
+        //}
 
     }
 }

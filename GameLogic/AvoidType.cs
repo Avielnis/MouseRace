@@ -17,7 +17,7 @@ namespace GameLogic
             personalBehaviorTimer.Tick += PersonalTimer_Tick;
         }
 
-        private void PersonalTimer_Tick(object? sender, EventArgs e)
+        public override void PersonalTimer_Tick(object? sender, EventArgs e)
         {
             isMovingFoword = !isMovingFoword;
         }

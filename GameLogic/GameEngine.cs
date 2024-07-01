@@ -44,6 +44,10 @@ namespace GameLogic
             {
                 return Config.SPEED;
             }
+            set
+            {
+                Config.SPEED = value;
+            }
         }
         public int MaxSize
         {

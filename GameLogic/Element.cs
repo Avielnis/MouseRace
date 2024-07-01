@@ -14,13 +14,13 @@ namespace GameLogic
     {
 
         protected bool isMovingFoword;
-        protected System.Windows.Forms.Timer movingTimer;
+        //protected System.Windows.Forms.Timer movingTimer;
         protected System.Windows.Forms.Timer personalBehaviorTimer;
 
         protected Random random = new Random();
 
         protected readonly Size MARGINED_WINDOW_SIZE;
-        protected readonly int SPEED = GameEngine.Instance.Speed;
+        //protected readonly int SPEED = GameEngine.Instance.Speed;
         private readonly int MAX_SIZE = GameEngine.Instance.MaxSize;
 
         public Element() : base()
@@ -30,6 +30,14 @@ namespace GameLogic
             setTimers();
 
             styleElement();
+        }
+
+        protected int SPEED
+        {
+            get
+            {
+                return GameEngine.Instance.Speed;
+            }
         }
         private void styleElement()
         {
@@ -45,26 +53,36 @@ namespace GameLogic
         }
         protected void setTimers()
         {
-            movingTimer = new System.Windows.Forms.Timer();
-            movingTimer.Enabled = true;
-            movingTimer.Interval = 50;
-            movingTimer.Tick += MovingTime_Tick;
+            //movingTimer = new System.Windows.Forms.Timer();
+            //movingTimer.Enabled = true;
+            //movingTimer.Interval = 50;
+            //movingTimer.Tick += MovingTime_Tick;
 
             personalBehaviorTimer = new System.Windows.Forms.Timer();
             personalBehaviorTimer.Enabled = true;
-
-
         }
 
-        private void MovingTime_Tick(object? sender, EventArgs e)
-        {
-            this.Behave();
+        //private void MovingTime_Tick(object? sender, EventArgs e)
+        //{
+        //    this.Behave();
 
+        //}
+        public void Disable()
+        {
+            this.Enabled = false;
+            this.personalBehaviorTimer.Enabled = false;
+        }
+        public void Enable()
+        {
+            this.Enabled = true;
+            this.personalBehaviorTimer.Enabled = true;
         }
 
         public abstract void Behave();
 
 
         public abstract void PreformClick();
+
+        public abstract void PersonalTimer_Tick(object? sender, EventArgs e);
     }
 }
